@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MemberList } from './MemberList';
-import { TextField } from "./TextField"
+import { MemberList } from './components/MemberList';
+import { TextField } from "./components/TextField"
 
 const App = () => {
   return (
