@@ -6,9 +6,6 @@ const App = () => {
   return (
     <div>
         <MemberList />
-
-        <TextField text='hello' person={{firstName: '', lastName: ''}} />
-
     </div>
   )
 }
