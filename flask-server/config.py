@@ -1,4 +1,6 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 class Config:
@@ -11,7 +13,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.getenv('DEV_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DEV_DB_URL)')
 
 
 class TestingConfig(Config):
