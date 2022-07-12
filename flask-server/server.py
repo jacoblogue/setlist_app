@@ -1,16 +1,11 @@
-# from flask import Flask
+from app import db
+from app.routes import app
+from app.models import Song
 
 
-# app = Flask(__name__)
-
-# # Members API route
-
-
-# @app.route('/members')
-# def members():
-#     return {"members": ["member1", 'member2', 'member3']}
-
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'Song': Song}
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
-from app.routes import app
