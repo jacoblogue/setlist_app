@@ -1,1 +1,3 @@
 .env
+flask-server/app/__pycache__
+flask-server/__pycache__
