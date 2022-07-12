@@ -12,9 +12,9 @@ def get_songs():
     return jsonify([song.to_json() for song in songs])
 
 
-@app.route('/song/<string:title>', methods=['GET'])  # change url for route?
-def get_song(title):
-    song = Song.query.get(title)
+@app.route('/song/<int:id>', methods=['GET'])  # get song by id
+def show_song(id):
+    song = Song.query.get(id)
     if song is None:
         abort(404)
-    return jsonify(song.to_json)
+    return jsonify(song.to_json())
