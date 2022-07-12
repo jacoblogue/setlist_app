@@ -43,13 +43,16 @@ def create_song():
     db.session.commit()
     return jsonify(song.to_json()), 201
 
-# @app.route('/song/<int:id>', methods=['PUT'])  # update song by id
-# def update_song(id):
-#     song = Song.query.get(id)
-#     if song is None:
-#         abort(404)
-#     song.title = request.json.get('title', song.title)
-#     song.artist = request.json.get('artist', song.artist)
-#     song.length = request.json.get('length', song.length)
-#     db.session.commit()
-#     return jsonify(song.to_json())
+
+@app.route('/song/<int:id>', methods=['PUT'])  # update song by id
+def update_song(id):
+    if not request.json:
+        abort(400)
+    song = Song.query.get(id)
+    if song is None:
+        abort(404)
+    song.title = request.json.get('title', song.title)
+    song.artist = request.json.get('artist', song.artist)
+    song.length = request.json.get('length', song.length)
+    db.session.commit()
+    return jsonify(song.to_json())
