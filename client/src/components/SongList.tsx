@@ -26,11 +26,16 @@ export const SongList: React.FC = () => {
   } 
   , [])
 
+  const songListItems = songList.map((song: Song) => {
+    return <li key={song.id}>{song.title}</li>
+  }
+  )
+
   return (
     <div>
+      <h1>Songs:</h1>
       {songList.map((song: Song, i: number) => {
           return <p key={i}><strong>Song {i+1}:</strong> {song.title} <strong>by:</strong> {song.artist}</p>
-
       })}
 
     </div>
