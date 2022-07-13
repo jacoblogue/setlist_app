@@ -7,19 +7,17 @@ interface Song {
   id: number;
 }
 
-interface SongBank {
-  [key: string]: any;
-}
-
 export const SongList: React.FC = () => {
-  const [songList, setSongList] = useState<SongBank>([{}])
+  const [songList, setSongList] = useState<Array<Song>>([])
 
   //fetch songList from api and set it to songList
   useEffect(() => {
     const fetchSongList = async () => {
       const response = await fetch('/songs');
       const json = await response.json();
-      setSongList(json)      
+      setSongList(json)
+      console.log(json);
+            
     }
     fetchSongList()
     .catch(console.error)
@@ -30,9 +28,7 @@ export const SongList: React.FC = () => {
   return (
     <div>
       <h1>Songs:</h1>
-      {console.log(songList[0].title)} {/* for debugging -- should probably be something different */}
-      
-      {(typeof songList[0].title === 'undefined') ? (
+      {(songList.length === 0) ? (
         <p>Loading songs...</p>
       ) : (
         songList.map((song: Song, i: number) => {
@@ -42,7 +38,6 @@ export const SongList: React.FC = () => {
             <li><strong>Length:</strong> {Math.floor(song.length / 60)}:{(song.length % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}</li>
           </ul>
       }))}
-
     </div>
   )
 }
