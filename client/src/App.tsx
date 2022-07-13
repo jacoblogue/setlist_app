@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { MemberList } from './components/MemberList';
+import { SongList } from './components/SongList';
 
 const App = () => {
   return (
     <div>
-        <MemberList />
+        <SongList />
     </div>
   )
 }
