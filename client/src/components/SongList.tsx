@@ -19,9 +19,7 @@ export const SongList: React.FC = () => {
     const fetchsongList = async () => {
       const response = await fetch('/songs');
       const json = await response.json();
-      setSongList(json)
-      console.log(json);
-      
+      setSongList(json)      
     }
     fetchsongList()
     .catch(console.error)
