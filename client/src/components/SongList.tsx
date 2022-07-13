@@ -16,27 +16,32 @@ export const SongList: React.FC = () => {
 
   //fetch songList from api and set it to songList
   useEffect(() => {
-    const fetchsongList = async () => {
+    const fetchSongList = async () => {
       const response = await fetch('/songs');
       const json = await response.json();
       setSongList(json)      
     }
-    fetchsongList()
+    fetchSongList()
     .catch(console.error)
   } 
   , [])
 
-  const songListItems = songList.map((song: Song) => {
-    return <li key={song.id}>{song.title}</li>
-  }
-  )
 
   return (
     <div>
       <h1>Songs:</h1>
-      {songList.map((song: Song, i: number) => {
-          return <p key={i}><strong>Song {i+1}:</strong> {song.title} <strong>by:</strong> {song.artist}</p>
-      })}
+      {console.log(songList[0].title)} {/* for debugging -- should probably be something different */}
+      
+      {(typeof songList[0].title === 'undefined') ? (
+        <p>Loading songs...</p>
+      ) : (
+        songList.map((song: Song, i: number) => {
+          return <ul key={i}>
+            <li><strong>Title:</strong> {song.title}</li>
+            <li><strong>Artist:</strong> {song.artist}</li>
+            <li><strong>Length:</strong> {Math.floor(song.length / 60)}:{(song.length % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}</li>
+          </ul>
+      }))}
 
     </div>
   )
