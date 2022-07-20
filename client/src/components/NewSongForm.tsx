@@ -28,14 +28,17 @@ export const NewSongForm: React.FC = () => {
 
   return (
     // form to add a new song
-    <form onSubmit={onSubmit}>
-      <label>Title:</label>
-      <input name="title" onChange={onChange} />
-      <label>Artist:</label>
-      <input name="artist" onChange={onChange} />
-      <label>Length:</label>
-      <input name="length" onChange={onChange} />
-      <button type="submit">Add Song</button>
-    </form>
+    <div>
+      <h2>Add a new song:</h2>
+      <form onSubmit={onSubmit}>
+        <label htmlFor='title'>Title:</label>
+        <input name="title" onChange={onChange} />
+        <label htmlFor='artist'>Artist:</label>
+        <input name="artist" onChange={onChange} />
+        <label htmlFor='length'>Length:</label>
+        <input name="length" onChange={onChange} />
+        <button type="submit">Add Song</button>
+      </form>
+    </div>
   )
 }
