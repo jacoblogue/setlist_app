@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { useForm } from '../hooks/useForm'
 
-export const NewSongForm: React.FC = () => {
+export const NewSongForm: React.FC<any> = ({ songListUpdated }) => {
   // defining the initial state for the form
   const initialState = {
     title: '',
@@ -10,11 +10,13 @@ export const NewSongForm: React.FC = () => {
     length: 0
   }
 
+  // const { songListUpdated } = props;
+
   // getting the event handlers from our custoom hook
   const { onChange, onSubmit, values } = useForm(addSongCallback, initialState)
 
   // a submit function that will execute upon form submission
-  async function addSongCallback() { //  doublecheck this ** where I left off**
+  async function addSongCallback() {
     const response = await fetch('/song', {
       method: 'POST',
       headers: {
@@ -23,7 +25,7 @@ export const NewSongForm: React.FC = () => {
       body: JSON.stringify(values)
     })
     const json = await response.json()
-    console.log(json)
+    songListUpdated()
   }
 
   return (
