@@ -33,7 +33,7 @@ export const SongList: React.FC = () => {
     fetchSongList()
     .catch(console.error)
   } 
-  , [songList])
+  , [])
 
 
   return (
