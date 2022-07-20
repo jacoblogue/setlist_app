@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "src/components/TextField.tsx", "src/components/MemberList.tsx"  ]
+, "src/components/TextField.tsx", "src/components/MemberList.tsx", "client/node_modules/react-modal/reactModal.d.ts"]
 }
