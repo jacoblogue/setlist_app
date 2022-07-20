@@ -7,7 +7,7 @@ interface Song {
   id: number;
 }
 
-export const SongList: React.FC<any> = ({refreshToggle, songListUpdated}) => {
+export const SongList: React.FC<any> = ({refreshToggle, songListUpdated, toggleModal}) => {
   const [songList, setSongList] = useState<Array<Song>>([])
 
   //function to delete a song from the database
@@ -20,6 +20,7 @@ export const SongList: React.FC<any> = ({refreshToggle, songListUpdated}) => {
     })
     const data = await response.json()
     songListUpdated()
+    toggleModal()
   }
 
 
