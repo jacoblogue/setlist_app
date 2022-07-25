@@ -3,9 +3,10 @@ import {Button, Modal} from 'react-bootstrap'
 
 interface Props {
   modalOpenStatus: boolean
+  toggleModal: () => void
 }
 
-export const ConfirmDeleteModal: React.FC<Props> = ({modalOpenStatus}) => {
+export const ConfirmDeleteModal: React.FC<Props> = ({modalOpenStatus, toggleModal}) => {
   return (
     <Modal show={modalOpenStatus}>
       <Modal.Header>
@@ -14,7 +15,7 @@ export const ConfirmDeleteModal: React.FC<Props> = ({modalOpenStatus}) => {
       <Modal.Body>Are you sure you want to delete this song?</Modal.Body>
       <Modal.Footer>
         <Button variant="outline-primary">Confirm</Button>
-        <Button variant="outline-secondary">Cancel</Button>
+        <Button variant="outline-secondary" onClick={toggleModal}>Cancel</Button>
       </Modal.Footer>
     </Modal>
   )

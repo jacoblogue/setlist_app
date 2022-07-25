@@ -18,7 +18,7 @@ const App = () => {
     <div>
         <SongList refreshToggle={refreshToggle} songListUpdated={songListUpdated} toggleModal={toggleModal}/>
         <NewSongForm songListUpdated={songListUpdated}/>
-        <ConfirmDeleteModal modalOpenStatus={modalOpenStatus}/>
+        <ConfirmDeleteModal modalOpenStatus={modalOpenStatus} toggleModal={toggleModal}/>
     </div>
   )
 }
