@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 
 import { useForm } from '../hooks/useForm'
 
-export const NewSongForm: React.FC<any> = ({ songListUpdated }) => {
+interface Props {
+  songListUpdated: () => void
+}
+
+export const NewSongForm: React.FC<Props> = ({ songListUpdated }) => {
   // defining the initial state for the form
   const initialState = {
     title: '',
