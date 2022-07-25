@@ -7,7 +7,13 @@ interface Song {
   id: number;
 }
 
-export const SongList: React.FC<any> = ({updateSongId, refreshToggle, songListUpdated, toggleModal}) => {
+interface Props {
+  updateSongId: () => void
+  refreshToggle: boolean
+  toggleModal: () => void
+}
+
+export const SongList: React.FC<Props> = ({updateSongId, refreshToggle, toggleModal}) => {
   const [songList, setSongList] = useState<Array<Song>>([])
 
 
