@@ -8,7 +8,7 @@ interface Song {
 }
 
 interface Props {
-  updateSongId: () => void
+  updateSongId: (id: number) => void
   refreshToggle: boolean
   toggleModal: () => void
 }
