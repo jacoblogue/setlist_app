@@ -18,12 +18,11 @@ export const ConfirmDeleteModal: React.FC<Props> = ({songId, modalOpenStatus, to
         }
       })
       const data = await response.json()
-      console.log(data);
+      songListUpdated()
     }
 
     const handleConfirm = () => {
       console.log(songId);
-      songListUpdated()
       deleteSong(songId)
       toggleModal()
     }
