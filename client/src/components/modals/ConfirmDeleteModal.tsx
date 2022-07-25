@@ -8,10 +8,14 @@ interface Props {
 export const ConfirmDeleteModal: React.FC<Props> = ({modalOpenStatus}) => {
   return (
     <Modal show={modalOpenStatus}>
-      <h1>Are you sure?</h1>
-      <p>Are you sure you want to delete this song?</p>
-      <Button variant="outline-primary">Confirm</Button>
-      <Button variant="outline-primary">Cancel</Button>
+      <Modal.Header>
+        <Modal.Title>Are you sure?</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>Are you sure you want to delete this song?</Modal.Body>
+      <Modal.Footer>
+        <Button variant="outline-primary">Confirm</Button>
+        <Button variant="outline-secondary">Cancel</Button>
+      </Modal.Footer>
     </Modal>
   )
 }
