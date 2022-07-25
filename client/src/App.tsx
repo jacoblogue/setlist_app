@@ -7,6 +7,12 @@ import { ConfirmDeleteModal } from './components/modals/ConfirmDeleteModal'
 const App = () => {
   const [refreshToggle, setRefresh] = useState(true)
   const [modalOpenStatus, setModalOpenStatus] = useState(false)
+  const [songId, setSongId] = useState(-1)
+
+  const updateSongId = (id: number) => {
+    setSongId(id)
+  }
+
   const songListUpdated = () => {
     setRefresh(!refreshToggle)
   }
@@ -14,11 +20,12 @@ const App = () => {
     setModalOpenStatus(!modalOpenStatus)
     console.log(modalOpenStatus);
   }
+
   return (
     <div>
-        <SongList refreshToggle={refreshToggle} songListUpdated={songListUpdated} toggleModal={toggleModal}/>
+        <SongList updateSongId={updateSongId} refreshToggle={refreshToggle}  toggleModal={toggleModal}/>
         <NewSongForm songListUpdated={songListUpdated}/>
-        <ConfirmDeleteModal modalOpenStatus={modalOpenStatus} toggleModal={toggleModal}/>
+        <ConfirmDeleteModal songId={songId} modalOpenStatus={modalOpenStatus} toggleModal={toggleModal} songListUpdated={songListUpdated}/>
     </div>
   )
 }

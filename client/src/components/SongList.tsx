@@ -7,19 +7,13 @@ interface Song {
   id: number;
 }
 
-export const SongList: React.FC<any> = ({refreshToggle, songListUpdated, toggleModal}) => {
+export const SongList: React.FC<any> = ({updateSongId, refreshToggle, songListUpdated, toggleModal}) => {
   const [songList, setSongList] = useState<Array<Song>>([])
 
-  //function to delete a song from the database
-  const deleteSong = async (id: number) => {
-    const response = await fetch(`/song/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const data = await response.json()
-    songListUpdated()
+
+
+  const handleClick = (id: number) => {
+    updateSongId(id)
     toggleModal()
   }
 
@@ -48,7 +42,7 @@ export const SongList: React.FC<any> = ({refreshToggle, songListUpdated, toggleM
             <li><strong>Title:</strong> {song.title}</li>
             <li><strong>Artist:</strong> {song.artist}</li>
             <li><strong>Length:</strong> {Math.floor(song.length / 60)}:{(song.length % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}</li>
-            <button onClick={() => {deleteSong(song.id)}}>Delete</button>
+            <button onClick={() => {handleClick(song.id)}}>Delete</button>
           </ul>
       }))}
     </div>
