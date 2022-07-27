@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 import { useForm } from '../hooks/useForm'
@@ -20,7 +20,7 @@ export const NewSongForm: React.FC<Props> = ({ songListUpdated }) => {
   const { onChange, onSubmit, values } = useForm(addSongCallback, initialState)
 
   // a submit function that will execute upon form submission
-  async function addSongCallback(event:any) {
+  async function addSongCallback(event:FormEvent<HTMLFormElement>) {
     const form = event.currentTarget;
     console.log(form.checkValidity());
     
