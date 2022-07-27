@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const useForm = (callback: () => any, intialState = {}) => {
+export const useForm = (callback: (event: any) => any, intialState = {}) => {
   const [values, setValues] = useState(intialState);
 
   //onChange
@@ -11,7 +11,7 @@ export const useForm = (callback: () => any, intialState = {}) => {
   //onSubmit
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await callback();
+    await callback(event);
   }
   
   return {
