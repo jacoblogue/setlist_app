@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button, Form } from 'react-bootstrap'
 
 import { useForm } from '../hooks/useForm'
 
@@ -36,15 +37,21 @@ export const NewSongForm: React.FC<Props> = ({ songListUpdated }) => {
     // form to add a new song
     <div>
       <h2>Add a new song:</h2>
-      <form onSubmit={onSubmit}>
-        <label htmlFor='title'>Title:</label>
-        <input name="title" onChange={onChange} />
-        <label htmlFor='artist'>Artist:</label>
-        <input name="artist" onChange={onChange} />
-        <label htmlFor='length'>Length:</label>
-        <input name="length" onChange={onChange} />
-        <button type="submit">Add Song</button>
-      </form>
+      <Form onSubmit={onSubmit}>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='title'>Title:</Form.Label>
+          <Form.Control name='title' type='text' onChange={onChange}/>
+        </Form.Group>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='artist'>Artist:</Form.Label>
+          <Form.Control name='artist' type='text' onChange={onChange}/>
+        </Form.Group>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='length'>Length:</Form.Label>
+          <Form.Control name='length' type='number' onChange={onChange}/>
+        </Form.Group>
+        <Button type='submit'>Add Song</Button>
+      </Form>
     </div>
   )
 }
